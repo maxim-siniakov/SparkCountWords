@@ -1,5 +1,5 @@
 import org.apache.spark.ml.feature.{ RegexTokenizer, StopWordsRemover}
-import org.apache.spark.sql.{SparkSession}
+import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions._
 
 object Main {
@@ -12,7 +12,7 @@ object Main {
     val regexTokenizer = new RegexTokenizer()
       .setInputCol("value")
       .setOutputCol("words")
-      .setPattern("\\W")
+      .setPattern("([^A-Za-z0-9_-])")
 
     val regexTokenized = regexTokenizer.transform(df)
 
